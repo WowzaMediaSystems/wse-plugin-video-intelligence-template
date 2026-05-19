@@ -30,7 +30,7 @@ jobs:
             --user "$(id -u):$(id -g)" \
             --entrypoint sh \
             wowza/wowza-streaming-engine:latest-slim \
-            -c 'cp /usr/local/WowzaStreamingEngine/lib/*.jar /output/'
+            -c 'cp /usr/local/WowzaStreamingEngine/lib.default/*.jar /output/'
           echo "Extracted $(ls -1 wse-lib/*.jar | wc -l | xargs) WSE JAR files"
 
       - name: Build & publish to Maven Central
