@@ -36,9 +36,8 @@ emits, and any external services it depends on.&gt;
 ├── CLAUDE.md                   # Instructions for Claude to rename <template>
 ├── src/
 │   ├── main/java/com/wowza/wms/plugin/videointelligence/event/<Template>Plugin.java
+│   ├── main/js/<Template>Plugin.js   # Manager UI listener properties (deployed to wse.addon/listeners/)
 │   └── test/java/com/wowza/wms/plugin/videointelligence/event/<Template>PluginTest.java
-├── examples/
-│   └── <Template>Plugin.js     # Manager UI listener properties (deployed to wse.addon/listeners/)
 └── .github/workflows/
     ├── ci.yml                  # Build + test on PR / push to main
     └── release.yml             # Publish to Maven Central on GitHub release
