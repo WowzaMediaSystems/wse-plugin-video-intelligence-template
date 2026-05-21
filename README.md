@@ -89,9 +89,11 @@ Either way, artifacts land in `build/libs/`. Drop the resulting JAR into
 ## Releasing
 
 Releases are cut by creating a GitHub Release (which fires
-`release: published`). The `release.yml` workflow builds the artifacts in
-the `wse-plugin-builder` Docker image, then runs `./gradlew publish`
-natively against the Maven Central Portal.
+`release: published`). The `release.yml` workflow runs
+`./gradlew publishToMavenCentral` against the Maven Central Portal via the
+[vanniktech maven-publish](https://github.com/vanniktech/gradle-maven-publish-plugin)
+plugin. Upload, validation, and release all happen in one task — no
+manual click in the Portal UI required.
 
 Required GitHub secrets:
 
@@ -101,10 +103,10 @@ Required GitHub secrets:
 - `MAVEN_CENTRAL_GPG_SIGNING_KEY` — ASCII-armored GPG private key
 - `MAVEN_CENTRAL_GPG_SIGNING_PASSWORD` — GPG key passphrase
 
-After the workflow uploads, the deployment shows up under **Publishing →
-Deployments** in the Central Portal. Enable auto-publish on the
-`com.wowza` namespace (or click **Publish** there manually) to push it to
-Maven Central.
+To inspect a deployment before it goes live, set
+`-PautoReleaseToCentral=false` on the gradle command — the upload will
+stop at "validated" under **Publishing → Deployments** in the Portal,
+where you can click **Publish** manually.
 
 To cut a release:
 
