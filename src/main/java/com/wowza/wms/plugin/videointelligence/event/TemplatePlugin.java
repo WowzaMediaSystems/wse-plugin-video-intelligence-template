@@ -1,7 +1,7 @@
-// The plugin class lives in com.wowza.wms.plugin.videointelligence.event so VIF
+// The plugin class lives in com.wowza.wms.plugin.videointelligence.api, so VIF
 // short-names it in available_event_listeners (and the manager UI labels the
 // dropdown entry "<Name> v<version>" instead of falling back to "?.?.?"). The
-// build's `group` is a different per-plugin namespace so the generated
+// build's `group` is a different per-plugin namespace, so the generated
 // ReleaseInfo class doesn't shadow VIF's own ReleaseInfo.
 package com.wowza.wms.plugin.videointelligence.event;
 
@@ -12,6 +12,7 @@ import java.util.Set;
 import com.wowza.wms.application.IApplicationInstance;
 import com.wowza.wms.logging.WMSLogger;
 import com.wowza.wms.logging.WMSLoggerFactory;
+import com.wowza.wms.plugin.videointelligence.api.IVifEventListener;
 import com.wowza.wms.plugin.videointelligence.message.DetectionResponse;
 import com.wowza.wms.plugin.videointelligence.template.ReleaseInfo;
 import com.wowza.wms.stream.IMediaStream;
@@ -25,7 +26,8 @@ import com.wowza.wms.stream.IMediaStream;
  * {@code scene_methods}); return {@code true} from a handler to signal the
  * detection was consumed.
  */
-public class TemplatePlugin implements IVifEventListener {
+public class TemplatePlugin implements IVifEventListener
+{
 
     public static final String NAME = "wse-plugin-video-intelligence-<template>";
 
